@@ -39,7 +39,6 @@ Things you may want to cover:
 | last_name_kana  | string     | null: false                    |
 | first_name_kana | string     | null: false                    |
 | birthday        | date       | null: false                    |
-| user            | references | null: false, foreign_key: true |
 
 
 ### Association
@@ -47,7 +46,6 @@ Things you may want to cover:
 - has_many :items
 - has_many :comments
 - has_many :orders
-- has_many :deliveries
 
 ## items テーブル
 
@@ -108,5 +106,4 @@ Things you may want to cover:
 
 ### Association
 
-- belongs_to :user
 - belongs_to :order
