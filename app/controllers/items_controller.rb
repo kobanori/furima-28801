@@ -17,9 +17,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   private
 
   def move_to_sign_up
@@ -31,7 +28,7 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :description, :category_id, :condition_id, :postage_id, :prefecture_id, :set_up_time_id, :price).merge(user_id: current_user.id)
   end
-  
+
   def set_item
     @item = Item.find(params[:id])
   end
