@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :move_to_sign_up, except: [:index, :show, :edit]
-  before_action :set_item, only: [:show, :edit]
+  before_action :set_item, only: [:create, :show, :edit]
   before_action :move_to_item_show, only: [:edit]
   def index
   end
@@ -10,7 +10,6 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
     else
