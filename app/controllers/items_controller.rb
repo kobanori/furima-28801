@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-  before_action :move_to_sign_up, except: [:index, :show]
+  before_action :move_to_sign_up, except: [:index, :show, :edit]
   before_action :set_item, only: [:show, :edit]
+  before_action :move_to_item_show, only: [:edit]
   def index
   end
 
@@ -43,5 +44,11 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def move_to_item_show
+    unless user_signed_in? && current_user.id == @item.user_id
+      redirect_to item_path(@item.id)
+    end
   end
 end
