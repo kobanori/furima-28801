@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :set_up_time
   with_options presence: true do
+    validates :image
     validates :name, length: { maximum: 40 }
     validates :description, length: { maximum: 1000 }
     validates :category
