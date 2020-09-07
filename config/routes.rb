@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :items, only: [:new, :create, :show, :edit, :update] do
-    resources :orders, only:[:index, :create]
+    resources :orders, only:[:index, :new, :create]
     resources :deliveries, only:[:create]
   end
   root to: "items#index"
