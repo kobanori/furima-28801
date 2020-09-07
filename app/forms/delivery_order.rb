@@ -7,7 +7,7 @@ class DeliveryOrder
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }, length: { is: 8 }
     validates :city
     validates :block
-    validates :phone_number, format: { with: /[0-9]/ }, length: { maximum: 11 }
+    validates :phone_number, numericality: { only_integer: true }, length: { maximum: 11 }
   end
   validates :prefecture_id, numericality: { other_than: 1 }
 
@@ -15,6 +15,4 @@ class DeliveryOrder
     order = Order.create(user_id: user_id, item_id: item_id)
     Delivery.create(postcode: postcode, prefecture_id: prefecture_id, city: city, block: block, building: building, phone_number: phone_number, order_id: order.id)
   end
-
-
 end
