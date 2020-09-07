@@ -23,7 +23,7 @@ RSpec.describe DeliveryOrder, type: :model do
         expect(@delivery_order.errors.full_messages).to include("Postcode can't be blank")
       end
       it 'postcodeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
-        @delivery_order.postcode = 11111111
+        @delivery_order.postcode = 1_1111_111
         @delivery_order.valid?
         expect(@delivery_order.errors.full_messages).to include("Postcode is invalid")
       end

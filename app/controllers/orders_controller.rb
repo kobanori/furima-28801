@@ -2,20 +2,15 @@ class OrdersController < ApplicationController
   before_action :move_to_sign_in, only: [:index]
   before_action :set_item, only: [:index, :create]
   before_action :move_to_root, only: [:index]
-  
   def index
     @order = DeliveryOrder.new
   end
-  
-  def new
-  end
-
   def create
     @order = DeliveryOrder.new(order_params)
     if @order.valid?
       pay_item
       @order.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       render "index"
     end
