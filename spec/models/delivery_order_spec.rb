@@ -10,10 +10,6 @@ RSpec.describe DeliveryOrder, type: :model do
       it 'すべての値が正しく入力されていれば保存できること' do
         expect(@delivery_order).to be_valid
       end
-      it 'buildingは空でも保存できること' do
-        @delivery_order.building = nil
-        expect(@delivery_order).to be_valid
-      end
     end
 
     context '商品購入が失敗する場合' do
@@ -27,7 +23,7 @@ RSpec.describe DeliveryOrder, type: :model do
         @delivery_order.valid?
         expect(@delivery_order.errors.full_messages).to include("Postcode is invalid")
       end
-      it 'postcodeがハイフンを含んだ8桁でないと保存できないこと' do
+      it 'postcodeが8桁以上(ハイフン含む)だと保存できないこと' do
         @delivery_order.postcode = 1111-1111
         @delivery_order.valid?
         expect(@delivery_order.errors.full_messages).to include("Postcode is the wrong length (should be 8 characters)")
