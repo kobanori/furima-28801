@@ -5,7 +5,7 @@ class DeliveryOrder
 
   with_options presence: true do
     validates :postcode, format: { with: /\A\d{3}[-]\d{4}\z/ }, length: { is: 8 }
-    validates :prefecture_id, numericality: { other_than: 1 }
+    validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
     validates :city
     validates :block
     validates :phone_number, numericality: { only_integer: true }, length: { maximum: 11 }
